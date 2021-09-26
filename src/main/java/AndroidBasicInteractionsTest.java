@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class AndroidBasicInteractionsTest extends BaseTest {
     private AndroidDriver<WebElement> driver;
@@ -115,7 +116,7 @@ public class AndroidBasicInteractionsTest extends BaseTest {
         // Click button that opens a dialog
         AndroidElement openDialogButton = (AndroidElement) driver.findElementById("io.appium.android.apis:id/two_buttons");
         openDialogButton.click();
-
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         // Check that the dialog is there
         AndroidElement alertElement = (AndroidElement) driver.findElementById("android:id/alertTitle");
         String alertText = alertElement.getText();
